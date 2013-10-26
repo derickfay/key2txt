@@ -14,23 +14,13 @@ limitations:
 
 tell application "Keynote 5.3" (* Change to "Keynote" if you haven't installed Oct 2013 version of iWork *)
 	set buildByBullet to true (* uses the trick described here https://github.com/gnab/remark/issues/46 to simulate a build-in by bullet point *)
-	set mdResult to "<!DOCTYPE html>
-<html>
-  <head>
-    <title>Title</title>
-    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
-    <style type='text/css'>
-      /* Slideshow styles */
-    </style>
-  </head>
-  <body>
-    <textarea id='source'>
-"
 	set lfs to "
 
 "
+	set mdResult to ""
 	set x to 0
 	set theShow to slides of slideshow 1
+	set theShowTitle to title of slide 1 of slideshow 1
 	repeat with mySlide in theShow
 		-- ignore skipped slides
 		if skipped of mySlide is false then
@@ -82,7 +72,18 @@ tell application "Keynote 5.3" (* Change to "Keynote" if you haven't installed O
 	end repeat
 end tell
 
-set mdResult to mdResult & "</textarea>
+set mdResult to "<!DOCTYPE html>
+<html>
+  <head>
+    <title>" & theShowTitle & "</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+    <style type='text/css'>
+      /* Slideshow styles */
+    </style>
+  </head>
+  <body>
+    <textarea id='source'>
+" & mdResult & "</textarea>
     <script src='http://gnab.github.io/remark/downloads/remark-0.5.8.min.js' type='text/javascript'>
     </script>
     <script type='text/javascript'>
