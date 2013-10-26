@@ -75,7 +75,7 @@ tell application "Keynote 5.3" (* Change to "Keynote" if you haven't installed O
 end tell
 
 set mdResult to mdResult & "</textarea>
-    <script src='http://gnab.github.io/remark/downloads/remark-0.5.5.min.js' type='text/javascript'>
+    <script src='http://gnab.github.io/remark/downloads/remark-0.5.8.min.js' type='text/javascript'>
     </script>
     <script type='text/javascript'>
       var slideshow = remark.create();
