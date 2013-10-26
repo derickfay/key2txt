@@ -13,6 +13,7 @@ limitations:
 *)
 
 tell application "Keynote 5.3" (* Change to "Keynote" if you haven't installed Oct 2013 version of iWork *)
+	set buildByBullet to true (* uses the trick described here https://github.com/gnab/remark/issues/46 to simulate a build-in by bullet point *)
 	set mdResult to "<!DOCTYPE html>
 <html>
   <head>
@@ -49,9 +50,16 @@ tell application "Keynote 5.3" (* Change to "Keynote" if you haven't installed O
 				set mdResult to mdResult & "# " & theTitle & lfs
 			end if
 			
+			set y to 0
 			repeat with i in eachBullet
 				if i as string is not "Double-click to edit" then
 					set mdResult to mdResult & "- " & i & lfs
+					set y to y + 1
+					if y < (count of eachBullet) then
+						if buildByBullet then
+							set mdResult to mdResult & "--" & lfs
+						end if
+					end if
 				end if
 			end repeat
 			
