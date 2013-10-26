@@ -14,4 +14,4 @@ I had envisioned writing a Markdown to Keynote script but I think I will just co
 
 ### Broken in the October 2013 release of Keynote
 
-These work with Keynote 5.3 (Keynote '09) but not with Keynote 6.  I plan to keep using Keynote '09 for the time being, not least because the Applescript dictionary has been changed in ways that broke these scripts.  Yet another reason to move towards a text-based solution.
+These work with Keynote 5.3 (Keynote '09) but not with Keynote 6.  I plan to keep using Keynote 5.3 for the time being, not least because the Applescript dictionary has been changed in ways that broke these scripts.  Yet another reason to move towards a text-based solution.
