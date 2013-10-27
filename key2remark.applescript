@@ -1,7 +1,7 @@
 (* Convert Keynote Presentation to Remark HTML
 
 by Derick Fay
-2013-10-26
+2013-10-27
 
 usage:
 Open a Keynote presentation, then run the script.  Remark ( http://gnab.github.io/remark/#1 ) HTML will be copied to the clipboard.
