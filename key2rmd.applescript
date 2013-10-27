@@ -4,7 +4,7 @@ by Derick Fay
 2013-10-27
 
 usage:
-Open a Keynote presentation, then run the script.  Markdown will be copied to the clipboard.  Designed to produce Markdown for use with Remark ( http://gnab.github.io/remark/#1 )
+Open a Keynote presentation, then run the script.  Markdown will be written to a file with the same name as the original, in a user-selected directory.  Designed to produce Markdown for use with Remark ( http://gnab.github.io/remark/#1 )
 an alert will display if the presentation has any potentially missing images based on master slides used
 
 Keynote master slides supported with automatic styling:
@@ -27,6 +27,7 @@ limitations:
 - doesn't detect nested lists
 - treats every paragraph as a bullet whether it's a bullet in Keynote or not
 *)
+set theFolder to choose folder with prompt "Select output location"
 
 tell application "Keynote 5.3" (* Change to "Keynote" if you haven't installed Oct 2013 version of iWork *)
 	set buildByBullet to true (* uses the trick described here https://github.com/gnab/remark/issues/46 to simulate a build-in by bullet point *)
@@ -38,6 +39,7 @@ tell application "Keynote 5.3" (* Change to "Keynote" if you haven't installed O
 	set missingImages to 0 -- we will count potentially missing images based on the names of master slides
 	set theShow to slides of slideshow 1
 	set theShowTitle to title of slide 1 of slideshow 1
+	set theFileName to name of slideshow 1
 	repeat with mySlide in theShow
 		-- ignore skipped slides
 		if skipped of mySlide is false then
@@ -181,6 +183,8 @@ tell application "Keynote 5.3" (* Change to "Keynote" if you haven't installed O
 	end repeat
 end tell
 
-set the clipboard to mdResult
-
 display alert ((missingImages as string) & " image(s) may be missing")
+
+set theFile to ((POSIX path of theFolder) as string) & theFileName & ".md"
+
+do shell script "echo " & quoted form of mdResult & " > " & quoted form of theFile
