@@ -4,102 +4,73 @@
     <title>Title</title>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <style type='text/css'>
-/* the text */
-
-body {
+      /* Slideshow styles */	  
+	  body {
 	font-family: Helvetica, Arial, sans-serif;
-
+}
+	.two-column {
+	column-count:3;
+}
+    .left-column {
+     width: 45%;
+     float: left;
+}
+	.right-column {
+	width: 45%
+	float: right;
 }
 
-a:link { color: rgb(0, 0, 153) }  /* for unvisited links */
-a:visited { color: green } /* for visited links */
-a:hover { background-color: rgb(255, 255, 127) }
-
-td {font-family: Helvetica, Arial, sans-serif;
-}
-
-th {font-family: Helvetica, Arial, sans-serif;
-}
-h4 {font-weight: bold;
-	color: #000066;
-}
-
-h5 {color: #000066;
-}
-
-.link-description {
-	font-size: 11px;
-}
-
-/* the layout */
-
-#header {
-  background: #0f0;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 800px;
-  height: 100px;
-}
-#leftcol {
-  background: #f00;
-  position: absolute;
-top: 100px;
-  left: 0px;
-  width: 150px;
-  height: 500px;
-}
-#content {
-  background: #fff;
-  position: absolute;
-  top: 100px;
-left: 150px;
-  width: 700px;
-  height: 500px;
-}
-#footer {
-  background: #0f0;
-  position: absolute;
-  top: 500px;
-  left: 0px;
-  width: 800px;
-  height: 100px;
-}
     </style>
   </head>
   <body>
     <textarea id='source'>
-master: Title & Subtitle
+class: middle, center
 
 # Title
 
-- & Subtitle
+## & Subtitle
 
 ---
 
-master: Title - Center
+class: middle, center
 
 # Title - Center
 
 ---
 
-master: Title & Bullets
+class: center
 
-# Title here
+# Title & Bullets
+
+.left[
 
 - and a bullet
 
+]
+
+???
+
+presenter notes appear with the first bullet
+
+and stay displayed all the way through
+
 --
+
+.left[
 
 - another
 
+]
+
 --
+
+.left[
 
 - a third
 
----
+]
 
-master: Bullets
+---
 
 - Bullets
 
@@ -117,87 +88,161 @@ master: Bullets
 
 ---
 
-master: Blank
-
 ???
 
 blank
 
 ---
 
-master: Photo - Horizontal
+class: bottom, center
+
+![Missing image](image.jpg)
 
 # Photo - Horizontal
 
 ---
 
-master: Title - Top
+class: center
 
 # Title - Top
 
 ---
 
-master: Title, Bullets & Photo
+class: center
 
 # Title, Bullets & Photo
 
+.left-column[
+
+.left[
+
 - tbp
 
+]
+
 --
+
+.left[
 
 - bullet 2
 
+]
+
+]
+
+.right[![Missing image](image.jpg)]
+
 ---
 
-master: Title & Bullets - 2 Column
+class: center
 
-# Title
+# Title & Bullets - 2 Column
 
-- bullets
+.two-column[
 
---
-
-- bullets
-
---
+.left[
 
 - bullets
 
+]
+
 --
+
+.left[
 
 - bullets
 
+]
+
 --
+
+.left[
 
 - bullets
 
+]
+
 --
+
+.left[
 
 - bullets
 
+]
+
 --
+
+.left[
+
+- bullets
+
+]
+
+--
+
+.left[
+
+- bullets
+
+]
+
+--
+
+.left[
 
 - and another column
 
+]
+
 --
+
+.left[
 
 - with even more
 
+]
+
 --
+
+.left[
 
 - bullets
 
+]
+
 --
+
+.left[
 
 - (!)
 
+]
+
+]
+
 ---
 
-master: Photo - Vertical
+class: center, middle
 
-# Title
+.left-column[
 
-- photo vertical
+# Photo - Vertical
+
+## subtitle
+
+]
+
+.right[![Missing image](image.jpg)]
+
+---
+
+# Title & Bullets - Right
+
+- not yet supported
+
+--
+
+- here to see what happens with an unsupported theme
 
 </textarea>
     <script src='http://gnab.github.io/remark/downloads/remark-0.5.9.min.js' type='text/javascript'>
