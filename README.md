@@ -12,6 +12,8 @@ Since I am using the trick described here to [keep Keynote 6 and Keynote 5.3 App
 
 ### To do:
 
+I am going to concentrate on improving export to Remark Markdown
+
 - Finish CSS equivalents for the master slide types in Keynote
 - Create styles to go along with them
 
