@@ -1,10 +1,12 @@
-(* Convert Keynote Presentation to Remark HTML
+(* Convert Keynote Presentation to Remark Markdown
 
 by Derick Fay
-2013-10-27
+
+2014-04-02: updated for Keynote 6 - quickly, without comprehensive testing
+2013-09-20: Keynote '09 version
 
 usage:
-Open a Keynote presentation, then run the script.  Remark ( http://gnab.github.io/remark/#1 ) HTML will be written to a file with the same name as the original, in a user-selected directory.
+Open a Keynote presentation, then run the script.  Markdown will be written to a file with the same name as the original, in a user-selected directory.  Designed to produce Markdown for use with Remark ( http://gnab.github.io/remark/#1 )
 an alert will display if the presentation has any potentially missing images based on master slides used
 
 Keynote master slides supported with automatic styling:
@@ -27,7 +29,6 @@ limitations:
 - doesn't detect nested lists
 - treats every paragraph as a bullet whether it's a bullet in Keynote or not
 *)
-
 set theFolder to choose folder with prompt "Select output location"
 
 tell application "Keynote" (* Change to "Keynote" if you haven't installed Oct 2013 version of iWork *)
@@ -39,25 +40,25 @@ tell application "Keynote" (* Change to "Keynote" if you haven't installed Oct 2
 	set x to 0
 	set missingImages to 0 -- we will count potentially missing images based on the names of master slides
 	set theShow to slides of document 1
-	set theShowTitle to «class titl» of slide 1 of document 1
+	set theShowTitle to object text of the default title item of slide 1 of document 1
 	set theFileName to name of document 1
 	repeat with mySlide in theShow
 		-- ignore skipped slides
-		if «class KSHd» of mySlide is false then
+		if skipped of mySlide is false then
 			-- collect the contents of the slides
-			set theTitle to «class titl» of mySlide
-			set theBody to «class btxt» of mySlide
+			set theTitle to the object text of the default title item of mySlide
+			set theBody to the object text of the default body item of mySlide
 			set eachBullet to paragraphs of theBody
-			set theNotes to «class KnSn» of mySlide
+			set theNotes to the presenter notes of mySlide
 			set eachNote to paragraphs of theNotes
-			set theMaster to «class KnMP» of mySlide
+			set theMaster to name of base slide of mySlide
 			
 			--create the markdown
 			--set mdResult to mdResult & "master: " & name of theMaster & lfs
 			
 			--add classes for Titles corresponding to Keynote themes
 			set c to ""
-			set n to name of theMaster
+			set n to theMaster
 			if (n = "Title & Subtitle") or (n = "Title - Center") then
 				set c to "class: middle, center" -- based on https://github.com/gnab/remark/wiki/Text-Alignment
 			else if (n = "Title & Bullets") or (n = "Title - Top") or (n = "Title & Bullets - 2 Column") then
@@ -184,45 +185,8 @@ tell application "Keynote" (* Change to "Keynote" if you haven't installed Oct 2
 	end repeat
 end tell
 
-
-set mdResult to "<!DOCTYPE html>
-<html>
-  <head>
-    <title>" & theShowTitle & "</title>
-    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
-    <style type='text/css'>
-      /* Slideshow styles */	  
-	  body {
-	font-family: Helvetica, Arial, sans-serif;
-}
-	.two-column {
-	column-count:3;
-}
-    .left-column {
-     width: 45%;
-     float: left;
-}
-	.right-column {
-	width: 45%
-	float: right;
-}
-
-    </style>
-  </head>
-  <body>
-    <textarea id='source'>
-" & mdResult & "</textarea>
-    <script src='http://gnab.github.io/remark/downloads/remark-0.5.9.min.js' type='text/javascript'>
-    </script>
-    <script type='text/javascript'>
-      var slideshow = remark.create();
-    </script>
-  </body>
-</html>"
-
 display alert ((missingImages as string) & " image(s) may be missing")
 
-set theFile to ((POSIX path of theFolder) as string) & theFileName & ".html"
+set theFile to ((POSIX path of theFolder) as string) & theFileName & ".md"
 
 do shell script "echo " & quoted form of mdResult & " > " & quoted form of theFile
-
