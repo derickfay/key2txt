@@ -6,9 +6,9 @@ The scripts for Markdown have comments and documentation.  The Taskpaper scripts
 
 ### Keynote version requirements:
 
-The scripts beginning k2 are preliminary conversions to Keynote 6.
+The scripts with k2 in the filename are preliminary conversions to Keynote 6.
 
-The scripts beginning key2 work with Keynote 5.3 (Keynote '09) but not with Keynote 6.
+The scripts with key2 in the filename work with Keynote 5.3 (Keynote '09) but not with Keynote 6.
 
 Since I am using the trick described here to [keep Keynote 6 and Keynote 5.3 Applescript separate](https://discussions.apple.com/thread/5487564?tstart=0), some of the scripts refer to "Keynote 5.3" instead of "Keynote" in the tell commands.  Adjust according to the name of the Keynote 5.3 (i.e. Keynote '09) application file on your machine.
 
