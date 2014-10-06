@@ -16,9 +16,7 @@ limitations:
 
 tell application "Keynote"
 	set mdResult to ""
-	set lfs to "
-
-"
+	set lfs to "\n\n"
 	set x to 0
 	set theShow to slides of document 1
 	repeat with mySlide in theShow
@@ -35,10 +33,23 @@ tell application "Keynote"
 			end if
 			
 			repeat with i in eachBullet
-				if i as string is not "Double-click to edit" then
-					set mdResult to mdResult & "- " & i & lfs
+				if i as string is not "Double-click to edit" and (length of i as string > 0) then
+					set mdResult to mdResult & "* " & i & lfs
 				end if
 			end repeat
+			
+			set allNotes to ""
+			set eachNote to the paragraphs of the presenter notes of mySlide
+			
+			repeat with i in eachNote
+				if (length of i as string > 0) then
+					set allNotes to allNotes & i & " "
+				end if
+			end repeat
+			
+			if ((length of allNotes as string) > 0) then
+				set mdResult to mdResult & "^" & allNotes & lfs
+			end if
 			
 			-- add a new slide unless this is the last slide - i.e. avoid having a blank slide at the end
 			set x to x + 1
