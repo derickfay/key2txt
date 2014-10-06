@@ -38,8 +38,9 @@ tell application "Keynote"
 				end if
 			end repeat
 			
-			
-			
+			if (length of eachBullet > 0) then
+					set mdResult to mdResult & "\n"
+			end if 
 			
 			set allNotes to ""
 			set eachNote to the paragraphs of the presenter notes of mySlide
