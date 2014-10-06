@@ -34,9 +34,12 @@ tell application "Keynote"
 			
 			repeat with i in eachBullet
 				if i as string is not "Double-click to edit" and (length of i as string > 0) then
-					set mdResult to mdResult & "* " & i & lfs
+					set mdResult to mdResult & "* " & i & "\n"
 				end if
 			end repeat
+			
+			
+			
 			
 			set allNotes to ""
 			set eachNote to the paragraphs of the presenter notes of mySlide
