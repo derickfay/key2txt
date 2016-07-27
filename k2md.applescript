@@ -17,6 +17,7 @@ limitations:
 set theFolder to choose folder with prompt "Select output location"
 
 tell application "Keynote"
+	set theFileName to name of document 1
 	set mdResult to ""
 	set lfs to "
 
