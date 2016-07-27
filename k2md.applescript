@@ -8,7 +8,7 @@ by Derick Fay
 usage:
 Open a Keynote presentation, then run the script.  Markdown will be written to a file with the same name as the original, in a user-selected directory.
 
-This is a stripped-down version of 'Convert Keynote Presentation to Remark Markdown' designed to produce a Markdown representation of the presentation contents as displayed (i.e. no presenter notes or metadata)
+This is a stripped-down version of 'Convert Keynote Presentation to Remark Markdown' designed to produce a Markdown representation of the presentation contents and presenter notes
 
 limitations:
 - doesn't do anything with images since they are not readable with Applescript
@@ -58,6 +58,7 @@ tell application "Keynote"
 				end if
 			end repeat
 			
+			(* comment out the following to hide presenter notes *)
 			if ((length of allNotes as string) > 0) then
 				set mdResult to mdResult & "> " & allNotes & lfs
 			end if
