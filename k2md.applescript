@@ -33,7 +33,7 @@ tell application "Keynote"
 			set eachBullet to paragraphs of theBody
 			--create the markdown
 			-- ignore blank text fields
-			if theTitle is not "Double-click to edit" then
+			if theTitle is not "Double-click to edit" and theTitle is not "" then
 				set mdResult to mdResult & "# " & theTitle & lfs
 			end if
 			
@@ -59,7 +59,7 @@ tell application "Keynote"
 			end repeat
 			
 			if ((length of allNotes as string) > 0) then
-				set mdResult to mdResult & "^" & allNotes & lfs
+				set mdResult to mdResult & "> " & allNotes & lfs
 			end if
 			
 			-- add a new slide unless this is the last slide - i.e. avoid having a blank slide at the end
