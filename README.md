@@ -2,7 +2,7 @@
 
 A suite of Applescripts aimed at converting Keynote documents to text formats (Markdown, [Remark](http://gnab.github.io/remark/#1) Markdown, and Taskpaper), and back (Taskpaper only so far...).
 
-The scripts for Markdown have comments and documentation.  The Taskpaper scripts don't, but should be pretty self-explanatory.  They require TaskPaper 2, as TaskPaper 3 has dropped Applescript support.  (But there is a version to TP 3 in [this thread](http://support.hogbaysoftware.com/t/applescript-support-in-taskpaper-3/1309/8?u=derickfay).
+The scripts for Markdown have comments and documentation.  The Taskpaper scripts don't, but should be pretty self-explanatory.  They require TaskPaper 2, as TaskPaper 3 has dropped Applescript support.  (But there is a version for TP 3 in [this thread](http://support.hogbaysoftware.com/t/applescript-support-in-taskpaper-3/1309/8?u=derickfay).
 
 ### Keynote version requirements:
 
