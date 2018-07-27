@@ -1,6 +1,8 @@
 -- by Derick Fay
 -- 2014-04-02: updated for Keynote 6
 
+-- requires TaskPaper 2 (not TaskPaper 3)
+
 tell application "TaskPaper"
 	set theProjects to projects of document 1
 	
